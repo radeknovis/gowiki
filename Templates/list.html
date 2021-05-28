@@ -1,0 +1,23 @@
+<h1>List</h1>
+
+{{range .}}
+<div><a href="../view/{{ . }}">{{ . }}</a></div>
+{{else}}
+<div><strong>no rows</strong></div>
+{{end}}
+
+<form name="create_page_form" action="/edit/" method="POST">
+  <div>
+    <input id="page_title" type="text" placeholder="Title" />
+  </div>
+  <div>
+    <input type="submit" value="Create new page" onclick="return createNewPage()" />
+  </div>
+</form>
+
+<script>
+  function createNewPage() {
+    let pageName = document.getElementById("page_title").value
+    document.create_page_form.action = "/edit/" + pageName
+  }
+</script>
